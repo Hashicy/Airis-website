@@ -4,9 +4,21 @@ import { cookies } from 'next/headers'
 // Return a minimal noop supabase-like client when env vars are missing so
 // Next.js static prerender doesn't fail in environments without secrets.
 function createNoopClient() {
-  const noop = () => ({ data: null, error: null })
+  const noopResult = { data: null, error: null }
+
+  const chain = () => ({
+    select: async () => noopResult,
+    eq: () => chain(),
+    in: () => chain(),
+    order: () => chain(),
+    limit: () => chain(),
+    single: async () => noopResult,
+    insert: async () => noopResult,
+    update: async () => noopResult,
+  })
+
   return {
-    from: () => ({ select: noop, eq: noop, in: noop, order: noop, limit: noop, single: noop, insert: noop, update: noop }),
+    from: () => chain(),
     auth: { getSession: async () => ({ data: { session: null } }) },
   }
 }

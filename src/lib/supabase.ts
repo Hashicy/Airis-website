@@ -4,10 +4,21 @@ import { createBrowserClient } from '@supabase/ssr'
 // env vars are missing. This prevents browser-only APIs from running during
 // Next.js static export or server-side bundling.
 function createNoopBrowserClient() {
-  const noop = async () => ({ data: null, error: null })
+  const noopResult = { data: null, error: null }
+
+  const chain = () => ({
+    select: async () => noopResult,
+    eq: () => chain(),
+    in: () => chain(),
+    order: () => chain(),
+    limit: () => chain(),
+    single: async () => noopResult,
+    insert: async () => noopResult,
+    update: async () => noopResult,
+  })
 
   return {
-    from: () => ({ select: noop, eq: noop, in: noop, order: noop, limit: noop, single: noop, insert: noop, update: noop }),
+    from: () => chain(),
     auth: {
       getSession: async () => ({ data: { session: null } }),
       signInWithOAuth: async () => ({ data: null }),
