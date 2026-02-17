@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase'
 import { useAuth } from '@/context/auth-context'
 import { useRole } from '@/hooks/use-role'
 import { useRouter } from 'next/navigation'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs' // Assuming we have these or need to make them (I'll make a local version if needed, but I'll assume I can just use simple state for now to be safe)
+// Local tab controls used instead of a missing UI tabs component
 import { Check, X, Loader2 } from 'lucide-react'
 
 // Simple Tab component to avoid complexity with missing UI lib

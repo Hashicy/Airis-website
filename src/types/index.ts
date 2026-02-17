@@ -2,6 +2,7 @@ export type Role = 'user' | 'super_admin' | 'member' | 'core_committee' | 'facul
 
 export interface Profile {
   id: string;
+  position?: string | null;
   full_name: string | null;
   avatar_url: string | null;
   role: Role;
