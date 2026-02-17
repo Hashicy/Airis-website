@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase-server'
 import { ArrowUpRight, Github } from 'lucide-react'
+import type { Project } from '@/types'
 
 // This is a Server Component
 export async function FeaturedProjects() {
@@ -41,7 +42,7 @@ export async function FeaturedProjects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {(projects as (Project & { profiles?: { full_name?: string } })[]).map((project) => (
             <div key={project.id} className="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all hover:-translate-y-1">
               <div className="aspect-video bg-muted relative overflow-hidden">
                 {project.image_url ? (

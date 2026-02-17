@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase-server'
+import type { GalleryItem } from '@/types'
 
 export default async function GalleryPage() {
   const supabase = await createClient()
@@ -18,7 +19,7 @@ export default async function GalleryPage() {
       </p>
 
       <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-        {items?.map((item) => (
+        {(items as (GalleryItem & { profiles?: { full_name?: string } })[] | undefined)?.map((item) => (
           <div key={item.id} className="break-inside-avoid group relative rounded-2xl overflow-hidden pointer-events-none md:pointer-events-auto">
             <img 
                 src={item.image_url} 
