@@ -24,7 +24,6 @@ export async function FeaturedProjects() {
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
-          <div className="text-muted-foreground">No projects published yet.</div>
         </div>
       </section>
     )
