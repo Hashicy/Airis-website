@@ -6,19 +6,29 @@ import { createBrowserClient } from '@supabase/ssr'
 function createNoopBrowserClient() {
   const noopResult = { data: null, error: null }
 
-  const chain = () => ({
-    select: async () => noopResult,
-    eq: () => chain(),
-    in: () => chain(),
-    order: () => chain(),
-    limit: () => chain(),
-    single: async () => noopResult,
-    insert: async () => noopResult,
-    update: async () => noopResult,
-  })
+  function makeChain() {
+    const ch: any = {
+      select: () => ch,
+      eq: () => ch,
+      in: () => ch,
+      order: () => ch,
+      limit: () => ch,
+      single: () => ch,
+      insert: () => ch,
+      update: () => ch,
+      then(onFulfilled: any, onRejected: any) {
+        return Promise.resolve(noopResult).then(onFulfilled, onRejected)
+      },
+      catch(onRejected: any) {
+        return Promise.resolve(noopResult).catch(onRejected)
+      },
+    }
+
+    return ch
+  }
 
   return {
-    from: () => chain(),
+    from: () => makeChain(),
     auth: {
       getSession: async () => ({ data: { session: null } }),
       signInWithOAuth: async () => ({ data: null }),
