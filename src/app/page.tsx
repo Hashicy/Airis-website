@@ -10,21 +10,41 @@ export default function Home() {
     <div className="relative">
       <HeroScene />
       
-      <section className="h-screen flex flex-col items-center justify-center relative z-10 px-6">
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40 mb-6 drop-shadow-2xl">
-          AWAKENING <br /> INTELLIGENCE
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground text-center max-w-2xl mb-10 backdrop-blur-sm bg-black/10 p-4 rounded-xl border border-white/5">
-          The Artificial Intelligence Research and Innovation Society. <br />
-          Explored through code, consciousness, and community.
-        </p>
-        <div className="flex gap-4">
-             <button className="px-8 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all text-white font-medium hover:scale-105 active:scale-95">
-                 Explore Projects
-             </button>
-             <button className="px-8 py-3 rounded-full bg-primary/20 backdrop-blur-md border border-primary/50 hover:bg-primary/30 transition-all text-white font-medium hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(169,92,162,0.3)] hover:shadow-[0_0_40px_rgba(169,92,162,0.5)]">
-                 Join Us
-             </button>
+      <section className="min-h-screen flex flex-col items-center justify-center relative z-10 px-6 py-16">
+        <div className="max-w-4xl w-full text-center">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80 drop-shadow-lg">
+            AWAKENING
+            <br />
+            <span className="text-primary">INTELLIGENCE</span>
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground mx-auto max-w-3xl mb-8 leading-relaxed backdrop-blur-sm bg-black/8 p-5 rounded-2xl border border-white/5">
+            The Artificial Intelligence Research and Innovation Society — where researchers, builders, and creators converge to explore the future of intelligent systems.
+          </p>
+
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <button className="px-6 md:px-8 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all text-foreground dark:text-white font-semibold hover:scale-105 active:scale-95">
+              Explore Projects
+            </button>
+            <button className="px-6 md:px-8 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:brightness-105 transition-all">
+              Join Us
+            </button>
+          </div>
+
+          {/* Quick links cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <a href="/projects" className="p-4 rounded-2xl bg-white/4 border border-white/6 hover:border-primary/50 transition-colors">
+              <h4 className="font-semibold mb-1">Projects</h4>
+              <p className="text-sm text-muted-foreground">Browse short, medium, and long projects built by members.</p>
+            </a>
+            <a href="/people" className="p-4 rounded-2xl bg-white/4 border border-white/6 hover:border-primary/50 transition-colors">
+              <h4 className="font-semibold mb-1">People</h4>
+              <p className="text-sm text-muted-foreground">Meet the team — researchers, engineers, and advisors.</p>
+            </a>
+            <a href="/articles" className="p-4 rounded-2xl bg-white/4 border border-white/6 hover:border-primary/50 transition-colors">
+              <h4 className="font-semibold mb-1">Resources</h4>
+              <p className="text-sm text-muted-foreground">Learning paths, templates, and AI/ML guides.</p>
+            </a>
+          </div>
         </div>
       </section>
 
