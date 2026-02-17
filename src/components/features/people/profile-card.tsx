@@ -44,10 +44,13 @@ export function ProfileCard({ profile }: { profile: Profile }) {
 
     <div className="p-4">
     {/* Use theme-aware colors so names are visible in light and dark themes */}
-    <h3 className="text-lg font-bold text-foreground dark:text-white group-hover:text-primary transition-colors">{profile.full_name}</h3>
-    <p className="text-sm text-secondary font-medium mb-2 uppercase tracking-wider text-xs">
-      {profile.role.replace('_', ' ')}
-    </p>
+        <h3 className="text-lg font-bold text-foreground dark:text-white group-hover:text-primary transition-colors">{profile.full_name}</h3>
+        {profile.position && (
+          <div className="text-sm text-muted-foreground mb-1">{profile.position}</div>
+        )}
+        <p className="text-sm text-secondary font-medium mb-2 uppercase tracking-wider text-xs">
+            {profile.role.replace('_', ' ')}
+        </p>
     <p className="text-sm text-muted-foreground line-clamp-2 mb-3">
       {profile.bio || 'Building the future of AI.'}
     </p>
