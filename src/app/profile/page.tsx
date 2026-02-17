@@ -8,7 +8,6 @@ import { useEffect } from 'react'
 
 export default function ProfilePage() {
   const { user, profile, startSignOut, isLoading } = useAuth() as any // Cast for now as I might have missed exporting startSignOut or signOut
-  // Wait, I exported signOut in context.
   const { signOut } = useAuth()
   const { role, isSuperAdmin } = useRole()
   const router = useRouter()
