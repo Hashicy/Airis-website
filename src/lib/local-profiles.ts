@@ -1,0 +1,108 @@
+import type { Profile } from '@/types'
+
+// Local fallback profiles for development / demo when the database has no approved entries.
+// Assumptions:
+// - Leadership roles use 'core_committee'.
+// - Club advisor mapped to 'faculty'.
+// - All entries are marked `is_approved: true` so they appear publicly.
+
+const LOCAL_PROFILES: Profile[] = [
+  {
+    id: '11111111-1111-4111-8111-111111111111',
+    full_name: 'Rachit Gupta',
+    avatar_url: null,
+    role: 'core_committee',
+    bio: 'Researching Multimodal AI for Cognitive & Emotional State Analysis.',
+    social_links: null,
+    skills: ['multimodal', 'research'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+  {
+    id: '22222222-2222-4222-8222-222222222222',
+    full_name: 'Aditya Srivastav',
+    avatar_url: null,
+    role: 'core_committee',
+    bio: 'Developed an ML-Powered Financial Distress Predictor with Risk Scoring.',
+    social_links: null,
+    skills: ['ml', 'finance'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+  {
+    id: '33333333-3333-4333-8333-333333333333',
+    full_name: 'Japinder Kaur',
+    avatar_url: null,
+    role: 'core_committee',
+    bio: 'Participant at Mumbai Hacks.',
+    social_links: null,
+    skills: ['hackathons'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+  {
+    id: '44444444-4444-4444-8444-444444444444',
+    full_name: 'harshita joshi',
+    avatar_url: null,
+    role: 'member',
+    bio: 'Currently researching on language models',
+    social_links: null,
+    skills: ['nlp', 'language-models'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+  {
+    id: '55555555-5555-4555-8555-555555555555',
+    full_name: 'Vedant Madne',
+    avatar_url: null,
+    role: 'member',
+    bio: 'Built an Astrology-Based Consultancy Business.',
+    social_links: null,
+    skills: ['product', 'marketing'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+  {
+    id: '66666666-6666-4666-8666-666666666666',
+    full_name: 'Shourya Bafna',
+    avatar_url: null,
+    role: 'core_committee',
+    bio: 'AI Intern at Rashtram AI.',
+    social_links: null,
+    skills: ['ai', 'engineering'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+  {
+    id: '77777777-7777-4777-8777-777777777777',
+    full_name: 'Shreya Suman',
+    avatar_url: null,
+    role: 'faculty',
+    bio: 'Contributed to Satellite Image Modeling at BhooNidhi Hackathon.',
+    social_links: null,
+    skills: ['remote-sensing'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+  {
+    id: '88888888-8888-4888-8888-888888888888',
+    full_name: 'Yash Dhankar',
+    avatar_url: null,
+    role: 'member',
+    bio: 'NDA 153 Recommended.',
+    social_links: null,
+    skills: ['operations'],
+    achievements: null,
+    is_approved: true,
+    updated_at: '2026-02-17T00:00:00Z',
+  },
+]
+
+export default LOCAL_PROFILES
