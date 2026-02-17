@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase-server'
 import { ArrowUpRight, Github } from 'lucide-react'
 import Link from 'next/link'
 import type { Project } from '@/types'
+import LOCAL_PROJECTS from '@/lib/local-projects'
 
 export default async function ProjectsPage() {
   const supabase = await createClient()
@@ -10,6 +11,8 @@ export default async function ProjectsPage() {
     .select('*, profiles(full_name)')
     .eq('is_published', true)
     .order('created_at', { ascending: false })
+
+  const shown = (projects && projects.length > 0) ? projects : LOCAL_PROJECTS
 
   return (
     <div className="min-h-screen pt-32 pb-20 px-6 container mx-auto">
@@ -21,8 +24,9 @@ export default async function ProjectsPage() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  {(projects as (Project & { profiles?: { full_name?: string } })[] | undefined)?.map((project) => (
-          <div key={project.id} className="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all hover:-translate-y-1 flex flex-col h-full">
+        {(shown as (Project & { profiles?: { full_name?: string } })[] | undefined)?.map((project) => (
+          <Link key={project.id} href={`/projects/${project.slug}`} className="group block">
+            <div className="relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all hover:-translate-y-1 flex flex-col h-full">
             <div className="aspect-video bg-muted relative overflow-hidden shrink-0">
               {project.image_url ? (
                 <img 
@@ -64,7 +68,8 @@ export default async function ProjectsPage() {
                   ))}
               </div>
             </div>
-          </div>
+            </div>
+          </Link>
         ))}
 
         {(!projects || projects.length === 0) && (

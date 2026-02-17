@@ -38,12 +38,12 @@ export function Navbar() {
       aria-label="Main navigation"
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent',
-        isScrolled ? 'bg-background/60 backdrop-blur-md border-white/10 py-3' : 'bg-transparent py-5'
+        isScrolled ? 'bg-background/80 dark:bg-background/80 backdrop-blur-md border-white/10 py-3' : 'bg-transparent py-5'
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between gap-6">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 text-2xl md:text-3xl font-bold tracking-tighter text-white">
+  {/* Logo */}
+  <Link href="/" className="flex items-center gap-3 text-2xl md:text-3xl font-bold tracking-tighter text-foreground dark:text-white">
           <span className="sr-only">AIRIS Home</span>
           <div className="flex items-end gap-1">
             <span className="leading-none">AIRIS</span>
@@ -60,7 +60,7 @@ export function Navbar() {
                 href={link.href}
                 className={cn(
                   'text-sm font-medium px-3 py-2 rounded-md transition-colors inline-flex items-center relative',
-                  pathname === link.href ? 'text-white bg-white/5' : 'text-muted-foreground hover:text-white hover:bg-white/5'
+                  pathname === link.href ? 'text-foreground dark:text-white bg-white/5 dark:bg-white/5' : 'text-muted-foreground hover:text-foreground dark:hover:text-white hover:bg-white/5'
                 )}
               >
                 {link.name}
@@ -78,7 +78,7 @@ export function Navbar() {
         {/* Auth / CTA / Mobile Toggle */}
         <div className="flex items-center gap-4">
           {user ? (
-            <Link href="/profile" className="hidden md:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-white transition-colors">
+            <Link href="/profile" className="hidden md:flex items-center gap-2 text-sm font-medium text-foreground dark:text-white hover:text-white transition-colors">
               <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center border border-primary/50 overflow-hidden">
                 {profile?.avatar_url ? (
                   <img src={profile.avatar_url} alt="Avatar" className="w-full h-full rounded-full object-cover" />
@@ -88,18 +88,18 @@ export function Navbar() {
               </div>
             </Link>
           ) : (
-            <Link href="/login" className="hidden md:block text-sm font-medium text-muted-foreground hover:text-white transition-colors">
+            <Link href="/login" className="hidden md:block text-sm font-medium text-foreground dark:text-white hover:text-white transition-colors">
               Login
             </Link>
           )}
 
-          <Link href="/recruitment" className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold hover:brightness-105 transition-all">
+          <Link href="/recruitment" className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold shadow-md hover:brightness-105 transition-all">
             Join
           </Link>
 
           <button
             aria-label="Toggle menu"
-            className="md:hidden text-white p-2 rounded-md hover:bg-white/5"
+            className="md:hidden text-foreground dark:text-white p-2 rounded-md hover:bg-white/5"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -114,7 +114,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4"
+            className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4"
           >
             {navLinks.map((link) => (
               <Link
@@ -123,7 +123,7 @@ export function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={cn(
                   'text-lg font-medium transition-colors px-3 py-2 rounded-md',
-                  pathname === link.href ? 'text-white bg-white/5' : 'text-muted-foreground hover:text-white hover:bg-white/5'
+                  pathname === link.href ? 'text-foreground dark:text-white bg-white/5 dark:bg-white/5' : 'text-muted-foreground hover:text-foreground dark:hover:text-white hover:bg-white/5'
                 )}
               >
                 {link.name}
